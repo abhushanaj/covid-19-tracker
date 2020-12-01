@@ -1,28 +1,45 @@
-import React  from "react";
+import React from "react";
 
 /* Styling */
-import "./countryStatsTable.styles.scss"
+import "./countryStatsTable.styles.scss";
 
+/* Hooks */
+import useCountryStats from "../../hooks/useCountriesStat";
 
-interface Props{
+/* Utilities */
+import {sortCases} from "../../utils/index"
 
-}
+interface Props {}
 
-const CountryStatsTable:React.FC<Props>=()=>{
-	return (
-		<div className="country-stats-table">
-			<h4>Today's Cases</h4>
-			<div className="table">
+const CountryStatsTable: React.FC<Props> = () => {
+	const [countryStats, error] = useCountryStats("");
+	const sortedDataForDisplay=sortCases(countryStats);
 
-				<tr>
-					<td><img src="https://disease.sh/assets/img/flags/af.png" alt=""/> <span>Afghanistan</span></td>
-					<td>0</td>
-				</tr>
-
-			</div>
-		</div>
-	)
-}
-
+  return (
+    <div className="country-stats-table">
+      <h4>Today's Cases</h4>
+      <div className="table">
+				{
+					error ? (<h1>Oops!! Something went wrong!!</h1>) :null
+				}
+        {sortedDataForDisplay?.length > 0 &&
+          sortedDataForDisplay.map((country:any) => {
+            return (
+              <tr>
+                <td>
+                  <img
+                    src={country.countryInfo.flag}
+                    alt=""
+                  />{" "}
+                  <span>{country.country}</span>
+                </td>
+                <td>{country.cases}</td>
+              </tr>
+            );
+          })}
+      </div>
+    </div>
+  );
+};
 
 export default CountryStatsTable;
