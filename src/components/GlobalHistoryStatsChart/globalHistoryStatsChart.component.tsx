@@ -36,6 +36,7 @@ const GlobalHistoryStatsChart: React.FC<Props> = () => {
 
   return (
     <>
+			<h3 className="graph-heading">Visualize new cases....</h3>
       <form  className="globalStatsForm">
         <div className="input__group">
           <label htmlFor="cases">Cases</label>
@@ -75,8 +76,9 @@ const GlobalHistoryStatsChart: React.FC<Props> = () => {
           />
         </div>
       </form>
+		
       <LineGraph data={historyStatistics} caseType={selectedCaseType}/>
-    </>
+		</>
   );
 };
 

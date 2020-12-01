@@ -68,7 +68,8 @@ const LineGraph: React.FC<Props> = (props) => {
 	const buildChartData = transformToChartData(data, caseType);
 	console.log(buildChartData);
 
-  return buildChartData.length > 0 ? (
+  return (
+		buildChartData.length > 0 ? (
     <Line
       data={{
         datasets: [
@@ -83,7 +84,7 @@ const LineGraph: React.FC<Props> = (props) => {
     />
   ) : (
     <h1>Building your chart!!!</h1>
-  );
+  ));
 };
 
 export default LineGraph;
