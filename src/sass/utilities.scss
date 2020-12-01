@@ -6,3 +6,43 @@
 	}
 }
 
+.u-highlight-text{
+	color:$black;
+	background:$yellow;
+	border-radius: 5px;
+	padding:5px;
+	font-family:"Raleway",sans-serif;
+	font-weight: bold;
+}
+
+.u-category{
+	text-align: center;
+	font-size:2rem;
+	font-family:"Montserrat",sans-serif;
+	color:$black;
+	font-weight: lighter;
+}
+
+
+.u-imp-stat{
+	text-align: center;
+	font-size: 3.2rem;
+}
+
+.u-history-stat{
+	font-size: 1.1rem;
+	text-align: center;
+}
+
+
+.u-recovered{
+	color:$green;
+}
+
+.u-deaths{
+	color:$red;
+}
+
+.u-cases{
+	color:$warning;
+}
