@@ -6,6 +6,7 @@ import "./trackerpage.styles.scss";
 /* Components */
 import SummaryContainer from "../../components/SummaryContainer/summarycontainer.component";
 import CountryStatsTable from "../../components/CountryStatsTable/countryStatsTable.component";
+import GlobalHistoryStatsChart from "../../components/GlobalHistoryStatsChart/globalHistoryStatsChart.component";
 
 interface Props {}
 
@@ -16,9 +17,10 @@ const TrackerPage: React.FC<Props> = () => {
       <div className="trackerpage-section">
         <div className="trackerpage-section__left">
           <SummaryContainer />
+          <GlobalHistoryStatsChart />
         </div>
         <div className="trackerpage-section__right">
-          <CountryStatsTable/>
+          <CountryStatsTable />
         </div>
       </div>
     </div>
