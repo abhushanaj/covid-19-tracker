@@ -45,16 +45,28 @@ const SummaryContainer: React.FC<Props> = () => {
         </h2>
         <h2>
           <span className="u-highlight-text">
-          {prettyPrintNumber(globalStatsSummary?.population).toUpperCase()}
+            {prettyPrintNumber(globalStatsSummary?.population).toUpperCase()}
           </span>{" "}
           population affected...
         </h2>
       </div>
 
       <div className="summary__infobox">
-        <InfoBox caseType="cases" />
-        <InfoBox caseType="deaths" />
-        <InfoBox caseType="recovered" />
+        <InfoBox
+          caseType="cases"
+          todayStat={globalStatsSummary?.todayCases}
+          totalStat={globalStatsSummary?.cases}
+        />
+        <InfoBox
+          caseType="deaths"
+          todayStat={globalStatsSummary?.todayDeaths}
+          totalStat={globalStatsSummary?.deaths}
+        />
+        <InfoBox
+          caseType="recovered"
+          todayStat={globalStatsSummary?.todayRecovered}
+          totalStat={globalStatsSummary?.recovered}
+        />
       </div>
     </>
   );

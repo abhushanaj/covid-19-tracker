@@ -13,7 +13,7 @@ const Navbar:React.FC<Props>=()=>{
 		<nav className="navbar">
 			<ul className="navbar__items">
 				<li className="navbar__item">
-					<a href="#!" className="navbar__link">Home</a>
+					<Link to="/" className="navbar__link">Home</Link>
 				</li>
 				<li className="navbar__item">
 					<Link to="/tracker" className="navbar__link">Tracker</Link>
