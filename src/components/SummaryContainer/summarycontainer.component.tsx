@@ -13,6 +13,9 @@ import { GLOBAL_STATS_URL } from "../../constants/index";
 /* Utilities */
 import { prettyPrintNumber } from "../../utils/index";
 
+/* Asset */
+import clock from "../../asset/clock.svg";
+
 interface Props {}
 
 const SummaryContainer: React.FC<Props> = () => {
@@ -32,23 +35,28 @@ const SummaryContainer: React.FC<Props> = () => {
     <>
       <div className="summary">
         <h2>
+          <img src={clock} alt="Clock Illustration" />:
+         <span> {new Date(globalStatsSummary?.updated).toLocaleString()}</span> 
+        </h2>
+
+        <h3>
           <span className="u-highlight-text">
             {globalStatsSummary?.affectedCountries}
           </span>{" "}
           countries affected...
-        </h2>
-        <h2>
+        </h3>
+        <h3>
           <span className="u-highlight-text">
             {prettyPrintNumber(globalStatsSummary?.tests).toUpperCase()}
           </span>{" "}
           tests conducted...
-        </h2>
-        <h2>
+        </h3>
+        <h3>
           <span className="u-highlight-text">
             {prettyPrintNumber(globalStatsSummary?.population).toUpperCase()}
           </span>{" "}
           population affected...
-        </h2>
+        </h3>
       </div>
 
       <div className="summary__infobox">

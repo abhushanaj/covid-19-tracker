@@ -25,11 +25,11 @@ const CountryStatsTable: React.FC<Props> = () => {
         {sortedDataForDisplay?.length > 0 &&
           sortedDataForDisplay.map((country:any) => {
             return (
-              <tr>
+              <tr key={country.country}>
                 <td>
                   <img
                     src={country.countryInfo.flag}
-                    alt=""
+                    alt={country.country}
                   />{" "}
                   <span>{country.country}</span>
                 </td>
