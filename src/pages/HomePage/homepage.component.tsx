@@ -3,17 +3,17 @@ import React from "react";
 /* Styling */
 import "./homepage.styles.scss";
 
-interface Props{
+/* Components */
+import Herobox from "../../components/Herobox/herobox.component";
 
-}
+interface Props {}
 
-const HomePage :React.FC<Props>=()=>{
-	return (
-		<div className="homepage">
-			This is homepage
-		</div>
-	)
-
-}
+const HomePage: React.FC<Props> = () => {
+  return (
+    <>
+      <Herobox />
+    </>
+  );
+};
 
 export default HomePage;
