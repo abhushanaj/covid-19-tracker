@@ -5,13 +5,12 @@ import { MapContainer, TileLayer, Circle } from "react-leaflet";
 import "./countryStatMap.styles.scss";
 
 /* Constants */
-import { caseTypeColors, CaseType } from "../../constants/index";
+import { caseTypeColors, CaseType,mapCenter} from "../../constants/index";
 
 
 
-const buildMapData = (countries: any, caseType: CaseType) => {
+const buildCircleOnMap = (countries: any, caseType: CaseType) => {
   return countries.map((country: any) => {
-		console.log(caseTypeColors[caseType]);
     return (
       <Circle
         key={country.country}
@@ -19,7 +18,7 @@ const buildMapData = (countries: any, caseType: CaseType) => {
         color={caseTypeColors[caseType].color}
         fillColor={caseTypeColors[caseType].color}
         fillOpacity={0.5}
-        radius={Math.sqrt(country[caseType]) * 500}
+        radius={Math.sqrt(country[caseType]) * caseTypeColors[caseType].multiplier}
       ></Circle>
     );
   });
@@ -27,27 +26,23 @@ const buildMapData = (countries: any, caseType: CaseType) => {
 
 interface Props {
   caseType: CaseType;
-  mapZoom: number;
-  mapCenter: [number, number];
   countries: any;
 }
 
 const CountryStatMap: React.FC<Props> = (props) => {
 
-
-	const { caseType, mapZoom, mapCenter, countries } = props;
+  const { caseType, countries } = props;
 	
-
-
-  console.table({ caseType, mapZoom, mapCenter });
-
   return countries.length > 0 ? (
-    <MapContainer center={mapCenter} zoom={mapZoom} fadeAnimation={true}>
+    <MapContainer center={mapCenter} zoom={4} fadeAnimation={true}>
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {buildMapData(countries,caseType)};
+      { caseType==="cases" && buildCircleOnMap(countries,"cases")};
+      { caseType==="deaths" && buildCircleOnMap(countries,"deaths")} 
+      { caseType==="recovered" && buildCircleOnMap(countries,"recovered")} 
+      {/* { buildCircleOnMap(countries,"recovered")} */}
     </MapContainer>
   ) : null;
 };
