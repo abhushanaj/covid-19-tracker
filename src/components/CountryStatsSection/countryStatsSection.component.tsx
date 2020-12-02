@@ -7,26 +7,43 @@ import "./countryStatsSection.styles.scss";
 /* Constants */
 import { CaseType } from "../../constants/index";
 
-/* Hooks */
-import useCountriesStats from "../../hooks/useCountriesStat";
+/* Components */
+import CountryStatMap from "../CountryStatMap/countryStatMap.component";
 
 interface Props {}
 
 const CountryStatsSection: React.FC<Props> = (props) => {
-  const [selectedCountry, setSelectedCountry] = useState<string>("India");
+  const [selectedCountry, setSelectedCountry] = useState<string>("IN"); //iso2 for India is IN
   const [selectedCaseType, setSelectedCaseType] = useState<CaseType>("cases");
   const [countriesInfo, setCountriesInfo] = useState<any>([]);
+  const [, setCountryDetails] = useState<any>({});
+	const [mapZoom, setMapZoom] = useState<number>(4);
+  const [mapCenter, setMapCenter] = useState<[number,number]>([20,77]);
+	
 
   /* Effect to get all country Statistics */
   useEffect(() => {
     try {
       axios.get("https://disease.sh/v3/covid-19/countries").then((resp) => {
-        console.log(resp.data);
+        setCountriesInfo(resp.data);
       });
     } catch (err) {
       console.log("Errror", err);
     }
   }, []);
+
+  /* Effect which get's details for a country */
+  useEffect(() => {
+    try {
+      axios
+        .get(`https://disease.sh/v3/covid-19/countries/${selectedCountry}`)
+        .then((resp) => {
+          setCountryDetails(resp.data);
+					setMapZoom(3);
+					setMapCenter([resp.data.countryInfo.lat,resp.data.countryInfo.long])
+        });
+    } catch (err) {}
+  }, [selectedCountry]);
 
   const handleCaseTypeChange = (e: any) => {
     setSelectedCaseType(e.target.value);
@@ -46,8 +63,13 @@ const CountryStatsSection: React.FC<Props> = (props) => {
             value={selectedCountry}
             onChange={handleCountryChange}
           >
-            <option value="India">India</option>
-            <option value="USA">USA</option>
+            {countriesInfo.map((country: any) => {
+              return (
+                <option key={country.country} value={country.countryInfo.iso2}>
+                  {country.country}
+                </option>
+              );
+            })}
           </select>
         </div>
 
@@ -89,6 +111,20 @@ const CountryStatsSection: React.FC<Props> = (props) => {
           </div>
         </div>
       </form>
+
+      <div className="statistics-map">
+        {!selectedCountry ? (
+          <h1>Error loading the map</h1>
+        ) : (
+          <CountryStatMap
+            caseType={selectedCaseType}
+						mapZoom={mapZoom}
+						countries={countriesInfo}
+						mapCenter={mapCenter}
+
+          />
+        )}
+      </div>
     </div>
   );
 };

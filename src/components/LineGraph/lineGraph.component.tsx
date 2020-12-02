@@ -66,7 +66,6 @@ const LineGraph: React.FC<Props> = (props) => {
   const { data, caseType } = props;
 
 	const buildChartData = transformToChartData(data, caseType);
-	console.log(buildChartData);
 
   return (
 		buildChartData.length > 0 ? (
