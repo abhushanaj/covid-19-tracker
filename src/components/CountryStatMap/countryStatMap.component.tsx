@@ -42,7 +42,6 @@ const CountryStatMap: React.FC<Props> = (props) => {
       { caseType==="cases" && buildCircleOnMap(countries,"cases")};
       { caseType==="deaths" && buildCircleOnMap(countries,"deaths")} 
       { caseType==="recovered" && buildCircleOnMap(countries,"recovered")} 
-      {/* { buildCircleOnMap(countries,"recovered")} */}
     </MapContainer>
   ) : null;
 };
