@@ -7,6 +7,7 @@ import "./trackerpage.styles.scss";
 import SummaryContainer from "../../components/SummaryContainer/summarycontainer.component";
 import CountryStatsTable from "../../components/CountryStatsTable/countryStatsTable.component";
 import GlobalHistoryStatsChart from "../../components/GlobalHistoryStatsChart/globalHistoryStatsChart.component";
+import CountryStatsSection from "../../components/CountryStatsSection/countryStatsSection.component";
 
 interface Props {}
 
@@ -23,6 +24,9 @@ const TrackerPage: React.FC<Props> = () => {
           <CountryStatsTable />
         </div>
       </div>
+
+      <h1>Country Statistics 🏳️‍🌈</h1>
+      <CountryStatsSection />
     </div>
   );
 };
