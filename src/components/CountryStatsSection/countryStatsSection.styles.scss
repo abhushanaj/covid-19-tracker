@@ -7,6 +7,9 @@
 		width:70%;
 		margin:1.5rem auto;
 		flex-direction: column;
+		@media only screen and(max-width:500px){
+			width:100%;
+		}
 	}
 	.case-choice{
 		display:flex;
@@ -15,6 +18,9 @@
 		margin:2rem auto;
 		width:60%;
 		margin-top:4rem;
+		@media only screen and(max-width:650px){
+			width:100%;
+		}
 
 	}
 	
@@ -22,7 +28,10 @@
 
 .select__input {
   width:25rem;
-  margin: 0 auto;
+	margin: 0 auto;
+	@media only screen and(max-width:500px){
+		width:80%;
+	}
   select {
     width: 100%;
     height: 100%;
