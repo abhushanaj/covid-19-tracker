@@ -1,4 +1,4 @@
-import React from "react";
+import React  from "react";
 import { MapContainer, TileLayer, Circle } from "react-leaflet";
 
 /* Styling */
@@ -33,12 +33,16 @@ interface Props {
 }
 
 const CountryStatMap: React.FC<Props> = (props) => {
-  const { caseType, mapZoom, mapCenter, countries } = props;
+
+
+	const { caseType, mapZoom, mapCenter, countries } = props;
+	
+
 
   console.table({ caseType, mapZoom, mapCenter });
 
   return countries.length > 0 ? (
-    <MapContainer center={mapCenter} zoom={mapZoom}>
+    <MapContainer center={mapCenter} zoom={mapZoom} fadeAnimation={true}>
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
