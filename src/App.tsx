@@ -11,17 +11,20 @@ import TrackerPage from "./pages/TrackerPage/trackerpage.component";
 
 
 /* Components */
-import Navbar from "./components/Navbar/navbar.component";
+// import Navbar from "./components/Navbar/navbar.component";
+import Footer from "./components/Footer/footer.component";
+
 
 
 function App() {
   return (
     <>
-    <Navbar/>
+  
     <Switch>
       <Route exact path="/" component={HomePage}/>
       <Route exact path="/tracker" component={TrackerPage}/>
     </Switch>
+    <Footer/>
     </>
   );
 }
