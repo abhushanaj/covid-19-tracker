@@ -7,7 +7,7 @@ import "./App.scss";
 /* Pages */
 import HomePage from "./pages/HomePage/homepage.component";
 import TrackerPage from "./pages/TrackerPage/trackerpage.component";
-import HelpPage from "./pages/HelpPage/helpPage.component";
+
 
 
 /* Components */
@@ -21,7 +21,6 @@ function App() {
     <Switch>
       <Route exact path="/" component={HomePage}/>
       <Route exact path="/tracker" component={TrackerPage}/>
-      <Route exact path="/help" component={HelpPage}/>
     </Switch>
     </>
   );
