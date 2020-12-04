@@ -11,7 +11,7 @@ import TrackerPage from "./pages/TrackerPage/trackerpage.component";
 
 
 /* Components */
-// import Navbar from "./components/Navbar/navbar.component";
+
 import Footer from "./components/Footer/footer.component";
 
 
